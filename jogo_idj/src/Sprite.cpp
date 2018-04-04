@@ -1,12 +1,12 @@
 #include "Sprite.h"
 #include "Game.h"
 
-Sprite::Sprite()
+Sprite::Sprite(GameObject& associated) : Component(associated)
 {
 	texture = nullptr;
 }
 
-Sprite::Sprite(std::string file)
+Sprite::Sprite(std::string file, GameObject& associated) : Component(associated)
 {
 	texture = nullptr;
 	Open(file);
@@ -17,11 +17,16 @@ Sprite::~Sprite()
 	SDL_DestroyTexture(texture);
 }
 
+void Sprite::Update(float dt)
+{
+
+}
+
 void Sprite::Open(std::string file)
 {
 	if(texture != nullptr)
 	{
-            SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(texture);
 	}
 
 	texture = IMG_LoadTexture(Game::GetInstance().GetRenderer(), file.c_str());
@@ -46,26 +51,11 @@ void Sprite::SetClip(int x, int y, int w, int h)
 	clipRect = {x, y, w, h};
 }
 
-void Sprite::Render(int x, int y)
+void Sprite::Render()
 {
-	SDL_Rect dstrect = {0, 0, width, height};
+	SDL_Rect dstrect = {associated.box.x, associated.box.y, width, height};
 
 	SDL_RenderCopyEx(Game::GetInstance().GetRenderer(), texture, &clipRect, &dstrect, 0, nullptr, SDL_FLIP_NONE);
-	/*
-		Não sei como fazer isso.
-
-		Render é um wrapper para SDL_RenderCopy, que recebe quatro
-		argumentos.
-		● SDL_Renderer* renderer: O renderizador de Game.
-		● SDL_Texture* texture: A textura a ser renderizada;
-		● SDL_Rect* srcrect: O retângulo de clipagem. Especifica uma área da
-		textura a ser "recortada" e renderizada.
-		● SDL_Rect* dstrect: O retângulo destino. Determina a posição na tela
-		em que a textura deve ser renderizada (membros x e y). Se os membros
-		w e h diferirem das dimensões do clip, causarão uma mudança na
-		escala, contraindo ou expandindo a imagem para se adaptar a esses
-		valores.
-	*/
 }
 
 int Sprite::GetWidth()
@@ -78,9 +68,21 @@ int Sprite::GetHeight()
 	return height;
 }
 
-bool Sprite::isOpen()
+bool Sprite::IsOpen()
 {
 	if(texture != nullptr)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Sprite::Is(std::string type)
+{
+	if(type == "sprite")
 	{
 		return true;
 	}

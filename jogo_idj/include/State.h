@@ -3,6 +3,9 @@
 #include "SDL_include.h"
 #include "Sprite.h"
 #include "Music.h"
+#include "Sound.h"
+#include "Face.h"
+#include <memory>
 
 class State
 {
@@ -14,9 +17,12 @@ public:
 	void Update(float dt);
 	void Render();
 
-
 private:
-	Sprite bg;
+	//Sprite bg;
 	Music music;
 	bool quitRequested;
+
+	void Input();
+	void AddObject(int mouseX, int mouseY);
+	std::vector<std::unique_ptr<GameObject>> objectArray;
 };
