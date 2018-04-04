@@ -33,13 +33,13 @@ Game::Game(std::string title, int width, int height)
     	SDL_Log("Incapaz de inicializar Mix_Init: %s", SDL_GetError());
     	exit(1);
     }
-	
+
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) != 0)
     {
     	SDL_Log("Incapaz de inicializar Mix_OpenAudio: %s", SDL_GetError());
     	exit(1);
     }
-	
+
 	allocateChannels = Mix_AllocateChannels(32);
 
 	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
@@ -72,16 +72,15 @@ SDL_Renderer* Game::GetRenderer()
 #include <iostream>
 void Game::Run()
 {
-        state->LoadAssets();
-        
-        
+  state->LoadAssets();
+
 	while(!state->QuitRequested())
 	{
             //std::cout << "YAY" << std::endl;
 		state->Update(0);
 		state->Render();
 		SDL_RenderPresent(renderer);
-		SDL_Delay(33);	
+		SDL_Delay(33);
 	}
 
 	delete instance;

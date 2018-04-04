@@ -2,19 +2,23 @@
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
+#include "GameObject.h"
 
-class Sprite
+class Sprite : public Component
 {
 public:
-	Sprite();
-	Sprite(std::string file);
+	Sprite(GameObject& associated);
+	Sprite(std::string file, GameObject& associated);
 	~Sprite();
 	void Open(std::string file);
 	void SetClip (int x, int y, int w, int h);
 	void Render (int x, int y);
+	void Render();
+	void Update(float dt);
+	bool Is(std::string type);
 	int GetWidth();
 	int GetHeight();
-	bool isOpen();
+	bool IsOpen();
 
 private:
 

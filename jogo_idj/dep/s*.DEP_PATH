@@ -1,10 +1,3 @@
-bin/State.o: src/State.cpp include/State.h include/SDL_include.h \
- include/Sprite.h include/Music.h
+bin/Rect.o: src/Rect.cpp include/Rect.h
 
-include/State.h:
-
-include/SDL_include.h:
-
-include/Sprite.h:
-
-include/Music.h:
+include/Rect.h:
