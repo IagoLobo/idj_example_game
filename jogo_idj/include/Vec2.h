@@ -1,5 +1,8 @@
 #include <iostream>
 
+#ifndef Vec2_h
+#define Vec2_h
+
 class Vec2
 {
 public:
@@ -11,3 +14,5 @@ public:
   Vec2 GetRotated(float rotation);
 private:
 };
+
+#endif

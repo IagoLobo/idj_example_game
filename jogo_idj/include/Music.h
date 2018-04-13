@@ -3,6 +3,9 @@
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
 
+#ifndef Music_h
+#define Music_h
+
 class Music
 {
 public:
@@ -17,3 +20,5 @@ public:
 private:
 	Mix_Music* music;
 };
+
+#endif

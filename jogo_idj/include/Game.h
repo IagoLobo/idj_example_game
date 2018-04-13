@@ -2,6 +2,10 @@
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
+#include "Resources.h"
+
+#ifndef Game_h
+#define Game_h
 
 class State;
 class Game
@@ -20,3 +24,5 @@ private:
 	SDL_Renderer* renderer;
 	State* state;
 };
+
+#endif

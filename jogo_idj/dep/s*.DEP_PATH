@@ -1,3 +1,17 @@
-bin/Rect.o: src/Rect.cpp include/Rect.h
+bin/TileSet.o: src/TileSet.cpp include/TileSet.h include/SDL_include.h \
+ include/Sprite.h include/GameObject.h include/Component.h include/Rect.h \
+ include/Vec2.h
+
+include/TileSet.h:
+
+include/SDL_include.h:
+
+include/Sprite.h:
+
+include/GameObject.h:
+
+include/Component.h:
 
 include/Rect.h:
+
+include/Vec2.h:

@@ -16,6 +16,7 @@ State::~State()
 void State::LoadAssets()
 {
   GameObject* background = new GameObject();
+  GameObject* game_tile_map = new GameObject();
 
 	Sprite* sprite_bg = new Sprite("assets/img/ocean.jpg", *background);
 
@@ -30,6 +31,16 @@ void State::LoadAssets()
 	background->box.y = 0;
 
 	objectArray.emplace_back(background);
+
+  TileSet* set = new TileSet(64, 64, "assets/img/tileset.png", *game_tile_map);
+	TileMap* map = new TileMap(*game_tile_map,"assets/map/tileMap.txt", set);
+
+	game_tile_map->AddComponent(map);
+
+  game_tile_map->box.x = 0;
+	game_tile_map->box.y = 0;
+
+	objectArray.emplace_back(game_tile_map);
 
 	//bg.Open("assets/img/ocean.jpg");
   music.Open("assets/audio/stageState.ogg");

@@ -5,7 +5,11 @@
 #include "Music.h"
 #include "Sound.h"
 #include "Face.h"
+#include "TileMap.h"
 #include <memory>
+
+#ifndef State_h
+#define State_h
 
 class State
 {
@@ -26,3 +30,5 @@ private:
 	void AddObject(int mouseX, int mouseY);
 	std::vector<std::unique_ptr<GameObject>> objectArray;
 };
+
+#endif
