@@ -1,6 +1,9 @@
 #include "SDL_include.h"
 #include "Component.h"
 
+#ifndef Face_h
+#define Face_h
+
 class Face : public Component
 {
 public:
@@ -14,3 +17,5 @@ public:
 private:
   int hitpoints;
 };
+
+#endif

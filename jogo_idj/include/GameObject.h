@@ -5,6 +5,9 @@
 #include "Vec2.h"
 #include <vector>
 
+#ifndef GameObject_h
+#define GameObject_h
+
 class GameObject
 {
 public:
@@ -22,3 +25,5 @@ private:
   std::vector <Component*> components;
   bool isDead;
 };
+
+#endif

@@ -4,11 +4,14 @@
 #include "Component.h"
 #include <vector>
 
+#ifndef Sound_h
+#define Sound_h
+
 class Sound : public Component
 {
 public:
   Sound(GameObject& associated);
-  Sound(GameObject& assciated, std::string file);
+  Sound(GameObject& associated, std::string file);
   ~Sound();
   void Play(int times = 1);
   void Stop();
@@ -19,7 +22,8 @@ public:
   bool Is(std::string type);
 
 private:
-
   Mix_Chunk* chunk;
   int channel;
 };
+
+#endif

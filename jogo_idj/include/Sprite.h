@@ -4,6 +4,9 @@
 #include "SDL_include.h"
 #include "GameObject.h"
 
+#ifndef Sprite_h
+#define Sprite_h
+
 class Sprite : public Component
 {
 public:
@@ -19,6 +22,7 @@ public:
 	int GetWidth();
 	int GetHeight();
 	bool IsOpen();
+	void SetSize(int w, int h);
 
 private:
 
@@ -27,3 +31,5 @@ private:
 	int height;
 	SDL_Rect clipRect;
 };
+
+#endif

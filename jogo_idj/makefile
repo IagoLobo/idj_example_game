@@ -1,8 +1,8 @@
 CC = g++
 
-RMDIR = rm - rf
+RMDIR = rm -rf
 
-RM = rm - f
+RM = rm -f
 
 DEP_FLAGS = -MT $@ -MMD -MP -MF $(DEP_PATH)/s*.DEP_PATH
 

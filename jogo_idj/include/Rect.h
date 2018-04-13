@@ -1,5 +1,8 @@
 #include <iostream>
 
+#ifndef Rect_h
+#define Rect_h
+
 class Rect
 {
 public:
@@ -12,3 +15,5 @@ public:
   bool Contains(float recebido_x, float recebido_y);
 private:
 };
+
+#endif
