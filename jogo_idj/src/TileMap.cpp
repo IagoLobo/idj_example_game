@@ -59,7 +59,7 @@ void TileMap::Render()
   int i;
   for (i=0; i<mapDepth; i++)
   {
-		RenderLayer(i, 0, 0);
+    RenderLayer(i, Camera::pos.x, Camera::pos.y);
 	}
 }
 
@@ -79,7 +79,7 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY)
       {
         continue;
       }
-			tileSet->RenderTile(index, x, y);
+      tileSet->RenderTile(index, x + cameraX, y + cameraY);
 			x += tileSet->GetTileWidth();
 		}
 		x=0;

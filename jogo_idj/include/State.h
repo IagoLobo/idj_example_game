@@ -1,3 +1,6 @@
+#ifndef State_h
+#define State_h
+
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
@@ -6,10 +9,10 @@
 #include "Sound.h"
 #include "Face.h"
 #include "TileMap.h"
+#include "InputManager.h"
+#include "Camera.h"
+#include "CameraFollower.h"
 #include <memory>
-
-#ifndef State_h
-#define State_h
 
 class State
 {
@@ -26,7 +29,6 @@ private:
 	Music music;
 	bool quitRequested;
 
-	void Input();
 	void AddObject(int mouseX, int mouseY);
 	std::vector<std::unique_ptr<GameObject>> objectArray;
 };

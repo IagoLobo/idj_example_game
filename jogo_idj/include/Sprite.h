@@ -1,11 +1,12 @@
+#ifndef Sprite_h
+#define Sprite_h
+
 #include <string>
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
 #include "GameObject.h"
-
-#ifndef Sprite_h
-#define Sprite_h
+#include "Camera.h"
 
 class Sprite : public Component
 {

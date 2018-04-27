@@ -1,12 +1,12 @@
+#ifndef GameObject_h
+#define GameObject_h
+
 #include "SDL_include.h"
 #include "Component.h"
 #include <string>
 #include "Rect.h"
 #include "Vec2.h"
 #include <vector>
-
-#ifndef GameObject_h
-#define GameObject_h
 
 class GameObject
 {

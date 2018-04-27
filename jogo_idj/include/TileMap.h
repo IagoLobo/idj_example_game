@@ -1,9 +1,10 @@
+#ifndef Tilemap_h
+#define Tilemap_h
+
 #include "SDL_include.h"
 #include "TileSet.h"
 #include "Component.h"
-
-#ifndef Tilemap_h
-#define Tilemap_h
+#include "Camera.h"
 
 class TileMap : public Component
 {
