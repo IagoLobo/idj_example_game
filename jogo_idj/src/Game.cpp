@@ -72,12 +72,17 @@ SDL_Renderer* Game::GetRenderer()
 #include <iostream>
 void Game::Run()
 {
+	InputManager& input = InputManager::GetInstance();
+
   state->LoadAssets();
 
 	while(!state->QuitRequested())
 	{
             //std::cout << "YAY" << std::endl;
-		state->Update(0);
+		CalculateDeltaTime();
+
+		input.Update();
+		state->Update(dt);
 		state->Render();
 		SDL_RenderPresent(renderer);
 		SDL_Delay(33);
@@ -88,4 +93,17 @@ void Game::Run()
 	Resources::ClearSounds();
 
 	delete instance;
+}
+
+void Game::CalculateDeltaTime()
+{
+	int ticks = SDL_GetTicks();
+	dt = ticks - frameStart;
+	frameStart = ticks;
+	dt = dt/1000;
+}
+
+float Game::GetDeltaTime()
+{
+	return dt;
 }

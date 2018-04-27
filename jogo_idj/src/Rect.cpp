@@ -28,3 +28,15 @@ bool Rect::Contains(float recebido_x, float recebido_y)
     return false;
   }
 }
+
+void Rect::Centralize(float recebido_x, float recebido_y)
+{
+  this->x = recebido_x - (this->w/(2));
+  this->y = recebido_y - (this->h/(2));
+}
+
+Vec2 Rect::GetCenter()
+{
+  Vec2 res = Vec2(this->x + (this->w/2), this->y + (this->h/2));
+	return res;
+}

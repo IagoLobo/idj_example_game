@@ -1,17 +1,24 @@
-bin/TileSet.o: src/TileSet.cpp include/TileSet.h include/SDL_include.h \
- include/Sprite.h include/GameObject.h include/Component.h include/Rect.h \
- include/Vec2.h
+bin/Face.o: src/Face.cpp include/Face.h include/SDL_include.h \
+ include/Component.h include/InputManager.h include/Camera.h \
+ include/GameObject.h include/Rect.h include/Vec2.h include/GameObject.h \
+ include/Sound.h
 
-include/TileSet.h:
+include/Face.h:
 
 include/SDL_include.h:
 
-include/Sprite.h:
+include/Component.h:
+
+include/InputManager.h:
+
+include/Camera.h:
 
 include/GameObject.h:
-
-include/Component.h:
 
 include/Rect.h:
 
 include/Vec2.h:
+
+include/GameObject.h:
+
+include/Sound.h:

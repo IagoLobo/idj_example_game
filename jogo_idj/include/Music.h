@@ -1,10 +1,10 @@
+#ifndef Music_h
+#define Music_h
+
 #include <string>
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
-
-#ifndef Music_h
-#define Music_h
 
 class Music
 {
