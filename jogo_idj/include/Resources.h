@@ -1,8 +1,8 @@
-#include "SDL_include.h"
-#include <unordered_map>
-
 #ifndef Resources_h
 #define Resources_h
+
+#include "SDL_include.h"
+#include <unordered_map>
 
 class Resources
 {

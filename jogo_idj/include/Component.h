@@ -1,8 +1,8 @@
-#include <string>
-#include "SDL_include.h"
-
 #ifndef Component_h
 #define Component_h
+
+#include <string>
+#include "SDL_include.h"
 
 class GameObject;
 

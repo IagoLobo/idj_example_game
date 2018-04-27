@@ -1,9 +1,9 @@
+#ifndef TileSet_h
+#define TileSet_h
+
 #include "SDL_include.h"
 #include "Sprite.h"
 #include <cmath>
-
-#ifndef TileSet_h
-#define TileSet_h
 
 class TileSet
 {

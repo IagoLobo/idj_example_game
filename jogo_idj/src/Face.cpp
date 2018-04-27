@@ -15,6 +15,7 @@ Face::~Face()
 
 void Face::Damage(int damage)
 {
+  std::cout << damage << std::endl;
   hitpoints -= damage;
 
   if(hitpoints <= 0)
@@ -32,7 +33,15 @@ void Face::Damage(int damage)
 
 void Face::Update(float dt)
 {
+	InputManager& input = InputManager::GetInstance();
 
+	if(input.MousePress(1))
+  {
+		if(associated.box.Contains(input.GetMouseX() - Camera::pos.x, input.GetMouseY() - Camera::pos.y))
+    {
+			Damage(std::rand() % 10 + 10);
+		}
+	}
 }
 
 void Face::Render()

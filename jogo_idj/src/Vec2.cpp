@@ -30,3 +30,11 @@ Vec2& Vec2::operator+(const Vec2& other)
 
   return *this;
 }
+
+Vec2& Vec2::operator-(const Vec2& other)
+{
+  this->x -= other.x;
+  this->y -= other.y;
+
+  return *this;
+}

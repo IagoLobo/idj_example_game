@@ -1,8 +1,10 @@
-#include "SDL_include.h"
-#include "Component.h"
-
 #ifndef Face_h
 #define Face_h
+
+#include "SDL_include.h"
+#include "Component.h"
+#include "InputManager.h"
+#include "Camera.h"
 
 class Face : public Component
 {
