@@ -13,6 +13,9 @@ public:
   Vec2& operator+(const Vec2& other);
   Vec2& operator-(const Vec2& other);
   Vec2 GetRotated(float rotation);
+  float GetDistance(Vec2 vector);
+  float GetAngle(Vec2 vector);
+  
 private:
 };
 

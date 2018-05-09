@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "State.h"
+#define FRAME_DELAY 33 //16 para 60fps
 
 Game* Game::instance = nullptr;
 
@@ -74,18 +75,20 @@ void Game::Run()
 {
 	InputManager& input = InputManager::GetInstance();
 
-  state->LoadAssets();
+  state->Start();
 
 	while(!state->QuitRequested())
 	{
-            //std::cout << "YAY" << std::endl;
+          //std::cout << "YAY" << std::endl;
+		int startTick = SDL_GetTicks();
+
 		CalculateDeltaTime();
 
 		input.Update();
 		state->Update(dt);
 		state->Render();
 		SDL_RenderPresent(renderer);
-		SDL_Delay(33);
+		SDL_Delay(FRAME_DELAY - (SDL_GetTicks() - startTick));
 	}
 
 	Resources::ClearImages();

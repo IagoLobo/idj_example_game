@@ -38,3 +38,15 @@ Vec2& Vec2::operator-(const Vec2& other)
 
   return *this;
 }
+
+float Vec2::GetDistance(Vec2 vector)
+{
+  float res = sqrt(pow((this->x - vector.x),2) - pow((this->y - vector.y),2));
+  return res;
+}
+
+float Vec2::GetAngle(Vec2 vector)
+{
+  float res = atan2((vector.y - this->y), (vector.x - this->x));
+  return res;
+}

@@ -7,6 +7,7 @@
 #include "SDL_include.h"
 #include "Resources.h"
 #include "InputManager.h"
+#include "State.h"
 
 class State;
 class Game
