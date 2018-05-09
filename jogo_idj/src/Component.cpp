@@ -11,17 +11,22 @@ Component::~Component()
 
 }
 
-void Update(float dt)
+void Component::Update(float dt)
 {
 
 }
 
-void Render()
+void Component::Render()
 {
 
 }
 
-bool Is(std::string type)
+bool Component::Is(std::string type)
+{
+
+}
+
+void Component::Start()
 {
 
 }

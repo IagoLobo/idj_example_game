@@ -17,6 +17,7 @@ void State::LoadAssets()
 {
   GameObject* background = new GameObject();
   GameObject* game_tile_map = new GameObject();
+  GameObject* game_alien = new GameObject();
 
   CameraFollower* cameraFollower = new CameraFollower(*background);
 
@@ -25,9 +26,6 @@ void State::LoadAssets()
 	Sprite* sprite_bg = new Sprite("assets/img/ocean.jpg", *background);
 
 	background->AddComponent(sprite_bg);
-
-	//enemy->box.x = mouseX;
-	//enemy->box.y = mouseY;
 
   background->box.w = 1024;
 	background->box.h = 600;
@@ -46,6 +44,15 @@ void State::LoadAssets()
 
 	objectArray.emplace_back(game_tile_map);
 
+  game_alien->box.x = 512;
+	game_alien->box.y = 300;
+
+	Alien* alien = new Alien(*game_alien, 5);
+
+	game_alien->AddComponent(alien);
+
+	objectArray.emplace_back(game_alien);
+
 	//bg.Open("assets/img/ocean.jpg");
   music.Open("assets/audio/stageState.ogg");
   music.Play(-1);
@@ -60,18 +67,20 @@ void State::Update(float dt)
     quitRequested = true;
   }
 
-	if (input.KeyPress(SDLK_SPACE))
+	/*
+  if (input.KeyPress(SDLK_SPACE))
   {
     Vec2 objPos = Vec2(200, 0).GetRotated(-PI + PI*(rand() % 1001)/500.0) + Vec2(input.GetMouseX(), input.GetMouseY());
     AddObject((int)objPos.x, (int)objPos.y);
 	}
+  */
 
 	Camera::Update(dt);
 
   int i;
 	for (i=0; i<objectArray.size(); i++)
   {
-		objectArray[i]->Update(0);
+		objectArray[i]->Update(dt);
 	}
 
 	for (i=0; i<objectArray.size(); i++)
@@ -106,9 +115,6 @@ void State::AddObject(int mouseX, int mouseY)
 
 	GO->AddComponent(sprite_GO);
 
-	//enemy->box.x = mouseX;
-	//enemy->box.y = mouseY;
-
   GO->box.w = sprite_GO->GetWidth();
 	GO->box.h = sprite_GO->GetHeight();
   GO->box.Centralize(mouseX - Camera::pos.x, mouseY - Camera::pos.y);
@@ -124,4 +130,49 @@ void State::AddObject(int mouseX, int mouseY)
 	objectArray.emplace_back(GO);
 
   std::cout << "Criei GO!" << std::endl;
+}
+
+void State::Start()
+{
+  LoadAssets();
+
+  int i;
+  for(i=0;i<objectArray.size();i++)
+  {
+    objectArray[i]->Start();
+  }
+
+  started = true;
+}
+
+std::weak_ptr<GameObject> State::AddObject(GameObject* go)
+{
+	std::shared_ptr<GameObject> temp(go);
+
+	objectArray.push_back(temp);
+
+	if (started)
+  {
+		go->Start();
+	}
+
+	std::weak_ptr<GameObject> res(temp);
+
+	return res;
+}
+
+std::weak_ptr<GameObject> State::GetObjectPtr(GameObject* go)
+{
+	std::weak_ptr<GameObject> res;
+
+  int i;
+	for(i=0; i < objectArray.size(); i++)
+  {
+		if(objectArray[i].get() == go)
+    {
+        res = objectArray[i];
+    }
+	}
+
+	return res;
 }
